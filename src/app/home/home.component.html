@@ -1,0 +1,51 @@
+<!-- <button (click)="emitConnectUser()">Connect User</button>
+<button (click)="emitGetStatusOfSession()">Get Status of session</button>
+<button (click)="emitConnectRoom()">connect room</button> -->
+
+
+
+<ng-container *ngIf="callScreen == 'menu'">
+  <div *ngIf="user_type != 'linguist'">
+    <input
+      type="text"
+      name="source_language"
+      placeholder="source language"
+      [(ngModel)]="sourceLanguage"
+    />
+    <input
+      type="text"
+      name="target_language"
+      placeholder="target language"
+      [(ngModel)]="targetLanguage"
+    />
+    <button (click)="requestCall()">Request Call</button>
+  </div>
+  <div *ngIf="user_type == 'linguist'">
+    <input
+      type="text"
+      name="channel_id"
+      placeholder="channel"
+      [(ngModel)]="channelId"
+    />
+    <input
+      type="text"
+      name="session_id"
+      placeholder="session"
+      [(ngModel)]="sessionId"
+    />
+    <button (click)="acceptCall()">Accept Call</button>
+  </div>
+</ng-container>
+<ng-container *ngIf="callScreen == 'waiting'">
+  <h1>
+    Waiting to connect to
+    <span *ngIf="user_type != 'linguist'"> Linguist</span>
+    <span *ngIf="user_type == 'linguist'">Client</span>
+
+  </h1>
+  <button (click)="join()">Join</button>
+</ng-container>
+<div #userStreams id="user-streams" ></div>
+<div #footer id="footer">
+
+</div>
